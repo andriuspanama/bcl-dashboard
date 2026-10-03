@@ -70,6 +70,7 @@ main{padding:20px;max-width:1400px;margin:0 auto}
 .venue-icon{color:var(--muted);font-size:.75rem}
 .status-banner{background:var(--border);color:var(--muted);font-size:.8rem;padding:8px 10px;border-radius:6px;text-align:center}
 .status-banner.warn{background:#fef3c7;color:#92400e}
+.status-banner.info{background:#dbeafe;color:#1e40af}
 .unavailable-section{margin-top:32px}
 .unavailable-section h2{font-size:1rem;color:var(--muted)}
 @media (max-width:600px){.topbar{padding:10px 12px}main{padding:12px}.grid{grid-template-columns:1fr}}
@@ -189,10 +190,12 @@ function renderTeamCard(team) {
   const tpl = document.querySelector("#team-card-template").content.cloneNode(true);
   const card = tpl.querySelector(".card");
 
-  card.querySelector(".team-name").textContent = team.name;
+  // ✅ VISADA rodomas pavadinimas
+  card.querySelector(".team-name").textContent = team.name || "Nežinoma komanda";
 
+  // Rekordas
   const badge = card.querySelector(".record-badge");
-  if (team.record && team.record.wins + team.record.losses > 0) {
+  if (team.record && (team.record.wins + team.record.losses) > 0) {
     badge.textContent = team.record.wins + "–" + team.record.losses;
     if (team.record.wins < team.record.losses) badge.classList.add("losing");
   } else {
@@ -200,15 +203,17 @@ function renderTeamCard(team) {
     badge.classList.add("none");
   }
 
+  // Grupė
   const tag = card.querySelector(".group-tag");
   if (team.group) {
     tag.textContent = team.group + " grupė";
     tag.dataset.group = team.group;
   } else {
-    tag.textContent = "—";
+    tag.textContent = "Be grupės";
     tag.style.background = "var(--muted)";
   }
 
+  // ✅ Kitos rungtynės — logika pataisyta
   const nextBlock = card.querySelector(".next-match");
   if (team.nextMatch) {
     card.querySelector(".next-time").textContent = formatLocal(team.nextMatch.startUtc);
@@ -216,12 +221,22 @@ function renderTeamCard(team) {
     const venue = team.nextMatch.venue === "home" ? "namie" : "išvykoje";
     card.querySelector(".next-opponent").textContent = "vs " + team.nextMatch.opponent + " (" + venue + ")";
   } else {
+    // Jei nėra nextMatch — rodom priklausomai nuo leagueStatus
     const banner = document.createElement("div");
-    banner.className = "status-banner warn";
-    banner.textContent = team.leagueStatus === "not_started" ? "Sezonas dar neprasidėjo" : "Nacionalinė lyga nerasta";
+    if (team.leagueStatus === "unknown") {
+      banner.className = "status-banner warn";
+      banner.textContent = "Nacionalinė lyga nerasta";
+    } else if (team.leagueStatus === "not_started") {
+      banner.className = "status-banner warn";
+      banner.textContent = "Sezonas dar neprasidėjo";
+    } else {
+      banner.className = "status-banner info";
+      banner.textContent = "Rungtynių data nežinoma";
+    }
     nextBlock.replaceWith(banner);
   }
 
+  // Paskutinės rungtynės
   const listEl = card.querySelector(".match-list");
   card.querySelector(".recent summary").textContent = "Paskutinės rungtynės";
   if (team.lastMatches && team.lastMatches.length) {
@@ -249,6 +264,7 @@ function renderTeamCard(team) {
 }
 
 function applyFilters() {
+  // ✅ Tik unknown → nepasiekiama. not_started lieka grid'e
   const unavailable = state.teams.filter(x => x.leagueStatus === "unknown");
   let list = state.teams.filter(x => x.leagueStatus !== "unknown");
   if (state.group !== "ALL") list = list.filter(x => x.group === state.group);
@@ -278,9 +294,16 @@ function render() {
     unavailSection.hidden = true;
   }
 
-  $("#updated").textContent = state.updatedAt
+  // ✅ Pridedu komandų skaičių
+  const total = state.teams.length;
+  const shown = list.length;
+  const unavailableCount = unavailable.length;
+  let updatedText = state.updatedAt
     ? "Atnaujinta: " + formatRelative(state.updatedAt) + " (" + formatLocal(state.updatedAt) + ")"
     : "";
+  updatedText += " · Rodoma: " + shown + " / " + total;
+  if (unavailableCount) updatedText += " (nepasiekiama: " + unavailableCount + ")";
+  $("#updated").textContent = updatedText;
 }
 
 function renderGroupChips() {
