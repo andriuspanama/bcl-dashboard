@@ -1,23 +1,37 @@
-
-  "updatedAt": "2026-10-03T10:32:00Z",
+{
+  "updatedAt": "2026-10-03T18:32:00Z",
   "teams": [
-    {
-      "id": "bilbao",
-      "name": "Bilbao",
-      "group": "G",
-      "leagueStatus": "active",
-      "record": { "wins": 21, "losses": 0 },
-      "nextMatch": { "startUtc": "2026-10-04T10:00:00Z", "opponent": "Leyma Coruna", "venue": "home" },
-      "lastMatches": [
-        { "opponent": "Manresa", "venue": "home", "homeScore": 107, "awayScore": 92, "dateUtc": "2026-09-30T18:00:00Z" }
-      ]
-    },
-    {
-      "id": "unicaja",
-      "name": "Unicaja",
-      "group": "E",
-      "leagueStatus": "active",
-      "record": { "wins": 120, "losses": 1 },
-      "nextMatch": { "startUtc": "2026-10-03T17:30:00Z", "opponent": "Tenerife", "venue": "home" },
-      "lastMatches": [
-        { "opponent": "Real Madrid", "venue": "away", "homeScore": 89, "awayScore": 
+    { "id": "bilbao", "name": "Bilbao", "group": "G", "leagueStatus": "active" },
+    { "id": "unicaja", "name": "Unicaja", "group": "E", "leagueStatus": "active" },
+    { "id": "joventut-badalona", "name": "Joventut Badalona", "group": "H", "leagueStatus": "active" },
+    { "id": "murcia", "name": "Murcia", "group": "D", "leagueStatus": "active" },
+    { "id": "aek-athens", "name": "AEK Athens", "group": "C", "leagueStatus": "active" },
+    { "id": "peristeri", "name": "Peristeri", "group": "D", "leagueStatus": "active" },
+    { "id": "legia", "name": "Legia", "group": "B", "leagueStatus": "active" },
+    { "id": "alba-berlin", "name": "Alba Berlin", "group": "G", "leagueStatus": "active" },
+    { "id": "bonn", "name": "Bonn", "group": "H", "leagueStatus": "active" },
+    { "id": "bamberg", "name": "Bamberg", "group": "D", "leagueStatus": "active" },
+    { "id": "vechta", "name": "Vechta", "group": "F", "leagueStatus": "active" },
+    { "id": "salon-vilpas", "name": "Salon Vilpas", "group": "C", "leagueStatus": "active" },
+    { "id": "reggiana", "name": "Reggiana", "group": "E", "leagueStatus": "active" },
+    { "id": "varese", "name": "Varese", "group": "D", "leagueStatus": "active" },
+    { "id": "juventus", "name": "Juventus", "group": "E", "leagueStatus": "active" },
+    { "id": "rytas", "name": "Rytas", "group": "A", "leagueStatus": "active" },
+    { "id": "nanterre", "name": "Nanterre", "group": "A", "leagueStatus": "active" },
+    { "id": "strasbourg", "name": "Strasbourg", "group": "B", "leagueStatus": "active" },
+    { "id": "cholet", "name": "Cholet", "group": "F", "leagueStatus": "active" },
+    { "id": "fc-porto", "name": "FC Porto", "group": "H", "leagueStatus": "active" },
+    { "id": "sabah-baku", "name": "Sabah Baku", "group": "A", "leagueStatus": "unknown" },
+    { "id": "szombathely", "name": "Szombathely", "group": "C", "leagueStatus": "active" },
+    { "id": "slavia-prague-era-nbk", "name": "Slavia Prague ERA NBK", "group": "G", "leagueStatus": "active" },
+    { "id": "pardubice", "name": "Pardubice", "group": "E", "leagueStatus": "active" },
+    { "id": "cibona", "name": "Cibona", "group": "B", "leagueStatus": "active" },
+    { "id": "antwerp-giants", "name": "Antwerp Giants", "group": "C", "leagueStatus": "not_started" },
+    { "id": "igokea", "name": "Igokea", "group": "G", "leagueStatus": "not_started" },
+    { "id": "hapoel-holon", "name": "Hapoel Holon", "group": "F", "leagueStatus": "active" },
+    { "id": "bnei-herzliya", "name": "Bnei Herzliya", "group": "H", "leagueStatus": "active" },
+    { "id": "galatasaray", "name": "Galatasaray", "group": "B", "leagueStatus": "active" },
+    { "id": "trabzonspor", "name": "Trabzonspor", "group": "A", "leagueStatus": "active" },
+    { "id": "spartak-subotica", "name": "Spartak Subotica", "group": "F", "leagueStatus": "not_started" }
+  ]
+}
