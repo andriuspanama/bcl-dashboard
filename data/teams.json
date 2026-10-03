@@ -1,4 +1,4 @@
-{
+
   "updatedAt": "2026-10-03T10:32:00Z",
   "teams": [
     {
@@ -20,17 +20,4 @@
       "record": { "wins": 120, "losses": 1 },
       "nextMatch": { "startUtc": "2026-10-03T17:30:00Z", "opponent": "Tenerife", "venue": "home" },
       "lastMatches": [
-        { "opponent": "Real Madrid", "venue": "away", "homeScore": 89, "awayScore": 87, "dateUtc": "2026-09-28T19:00:00Z" }
-      ]
-    },
-    {
-      "id": "sabah-baku",
-      "name": "Sabah Baku",
-      "group": "A",
-      "leagueStatus": "unknown",
-      "record": null,
-      "nextMatch": null,
-      "lastMatches": []
-    }
-  ]
-}
+        { "opponent": "Real Madrid", "venue": "away", "homeScore": 89, "awayScore": 
